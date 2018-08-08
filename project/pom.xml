@@ -78,6 +78,19 @@
             <version>1.2.16</version>
         </dependency>
         <!-- End: 日志依赖包 -->
+        <!-- 引入分页控件-->
+        <!--<dependency>-->
+            <!--<groupId>com.github.pagehelper</groupId>-->
+            <!--<artifactId>pagehelper</artifactId>-->
+            <!--<version>4.1.4</version>-->
+
+        <!--</dependency>-->
+        <!-- org.mybatis.generator-->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.5</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -108,6 +121,13 @@
                     <overwrite>true</overwrite>
                     <verbose>true</verbose>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
