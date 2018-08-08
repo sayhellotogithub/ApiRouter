@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "6dc33906-07c9-4b93-9d5a-69310f8519ae",
+		"name": "Sms",
+		"description": "用于测试接口",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "67067f81-6cd2-46bf-a916-851deefc0a71",
+			"name": "用户",
+			"item": [
+				{
+					"_postman_id": "e0f05a83-0bc9-40d8-a551-4a1d8852e2c8",
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"sessionValue": "1",
+									"type": "text"
+								},
+								{
+									"key": "userName",
+									"value": "admin",
+									"sessionValue": "2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"sessionValue": "3",
+									"type": "text"
+								},
+								{
+									"key": "roleName",
+									"value": "3",
+									"sessionValue": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users/cookie",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"cookie"
+							]
+						},
+						"description": "登录"
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "c817061f-056f-4b2e-96a9-2c020c6e22a2",
+					"name": "查询用户",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}users/ids?id=2",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"ids"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "5ed558ca-7f36-411d-a996-157a73bd33fb",
+					"name": "添加用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userName",
+									"value": "test2",
+									"sessionValue": "test1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"sessionValue": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}users",
+							"host": [
+								"{{url}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "b422226b-9ffb-4f2b-b19f-b82683f4892c",
+					"name": "修改用户信息",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}users?userName&password",
+							"host": [
+								"{{url}}users"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": null
+								},
+								{
+									"key": "password",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "48efeba6-acc5-4e56-96db-f284b7ff9aea",
+					"name": "删除用户",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}users/167",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"167"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "a85f1d76-4358-4dfe-87c7-dc9438f54d9a",
+					"name": "分页查询用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}users/datagrid?page&pageSize&userName",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"datagrid"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								},
+								{
+									"key": "pageSize",
+									"value": null
+								},
+								{
+									"key": "userName",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
