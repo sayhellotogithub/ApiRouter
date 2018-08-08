@@ -13,7 +13,6 @@ import static com.iblogstreet.apigate.common.ResultErrorStatusConstants.Message.
  */
 public class ResultGenerator {
 
-
     public static Result genSuccessResult() {
         Result result = new Result();
         result.setResultCode(RESULT_CODE_SUCCESS);
@@ -80,4 +79,5 @@ public class ResultGenerator {
     public static Result genParamError(String message) {
         return genFailResult(message, RESULT_CODE_PARAM);
     }
+
 }

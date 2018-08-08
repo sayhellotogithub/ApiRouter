@@ -1,7 +1,9 @@
 package com.iblogstreet.apigate.controller;
 
 import com.iblogstreet.apigate.common.BaseResult;
+import com.iblogstreet.apigate.common.PageBeanResult;
 import com.iblogstreet.apigate.common.Result;
+import com.iblogstreet.apigate.common.ResultErrorStatusConstants;
 import com.iblogstreet.apigate.common.ResultGenerator;
 import com.iblogstreet.apigate.model.User;
 import com.iblogstreet.apigate.pojo.UserBean;
@@ -13,9 +15,11 @@ import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -123,6 +127,46 @@ public class UserController {
         } else {
             return ResultGenerator.genServerError();
         }
+    }
+
+    /**
+     * 批量删除
+     *
+     * @param ids
+     * @return
+     */
+    @RequestMapping(value = "/{ids}", method = RequestMethod.DELETE)
+    public BaseResult delete(@PathVariable(value = "ids") String ids) {
+        if (StringUtil.isEmpty(ids)) {
+            return ResultGenerator.genParamError(USER_ID_EMPTY);
+        }
+        if (ids.length() > 20) {
+            return ResultGenerator.genFailResult("ERROR");
+        }
+        String[] idsStr = ids.split(",");
+        for (int i = 0; i < idsStr.length; i++) {
+            userService.deleteByPrimaryKey(Integer.valueOf(idsStr[i]));
+        }
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @RequestMapping(value = "/datagrid", method = RequestMethod.POST)
+    public PageBeanResult list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "pageSize", required = false) String pageSize, User user) {
+        log.info("request: article/delete , page: " + page + "pageSize" + pageSize + "user" + user);
+        //PageBeanResult pageBeanResult = new PageBeanResult(page, pageSize);
+        PageBeanResult pageBeanResult = new PageBeanResult(Integer.parseInt(page), Integer.parseInt(pageSize));
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("userName", StringUtil.formatLike(user.getUserName()));
+        map.put("start", pageBeanResult.getStart());
+        map.put("size", pageBeanResult.getPageSize());
+        List<UserBean> userList = userService.findUsers(map);
+        Long total = userService.getTotalUser(map);
+        pageBeanResult.setData(userList);
+        pageBeanResult.setTotal(total);
+        pageBeanResult.setResultCode(ResultErrorStatusConstants.Code.RESULT_CODE_SUCCESS);
+        return pageBeanResult;
+
     }
 
 }

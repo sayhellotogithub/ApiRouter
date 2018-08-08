@@ -62,11 +62,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserBean> findUsers(Map<String, Object> map) {
-        return null;
+        return userDao.findUsers(map);
     }
 
     @Override
     public Long getTotalUser(Map<String, Object> map) {
-        return null;
+        return userDao.getTotalUser(map);
     }
 }

@@ -5,23 +5,23 @@ package com.iblogstreet.apigate.common;
  */
 public class BaseResult {
     private static final long serialVersionUID = 1L;
-    private int resultCode;
+    private int status;
     private String message;
 
     public BaseResult() {
     }
 
     public BaseResult(int resultCode, String message) {
-        this.resultCode = resultCode;
+        this.status = resultCode;
         this.message = message;
     }
 
     public int getResultCode() {
-        return resultCode;
+        return status;
     }
 
     public void setResultCode(int resultCode) {
-        this.resultCode = resultCode;
+        this.status = resultCode;
     }
 
     public String getMessage() {
@@ -36,7 +36,7 @@ public class BaseResult {
     @Override
     public String toString() {
         return "Result{" +
-                "resultCode=" + resultCode +
+                "resultCode=" + status +
                 ", message='" + message + '\'' +
 
                 '}';
