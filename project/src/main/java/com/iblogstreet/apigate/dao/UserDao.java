@@ -1,6 +1,6 @@
 package com.iblogstreet.apigate.dao;
 
-import com.iblogstreet.apigate.pojo.User;
+import com.iblogstreet.apigate.pojo.UserBean;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
@@ -18,7 +18,7 @@ import java.util.Map;
 @Mapper
 public interface UserDao {
     /**
-     * @param user
+     * @param userBean
      * @return
      */
 
@@ -26,7 +26,7 @@ public interface UserDao {
             @Result(property = "userName", column = "user_name"),
             @Result(property = "roleName", column = "role_name")})
     @Select(" select id,password,role_name,user_name from ssm_user where user_name=#{userName} and password=#{password} limit 1")
-    User login(User user);
+    UserBean login(UserBean userBean);
 
     /**
      * 查找用户
@@ -34,7 +34,7 @@ public interface UserDao {
      * @param map
      * @return
      */
-    List<User> findUsers(Map<String, Object> map);
+    List<UserBean> findUsers(Map<String, Object> map);
 
     /**
      * @param map
@@ -42,27 +42,5 @@ public interface UserDao {
      */
     Long getTotalUser(Map<String, Object> map);
 
-    /**
-     * 实体修改
-     *
-     * @param user
-     * @return
-     */
-    int updateUser(User user);
 
-    /**
-     * 添加用户
-     *
-     * @param user
-     * @return
-     */
-    int addUser(User user);
-
-    /**
-     * 删除用户
-     *
-     * @param id
-     * @return
-     */
-    int deleteUser(Integer id);
 }

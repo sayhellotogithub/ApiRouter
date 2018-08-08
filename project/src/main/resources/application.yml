@@ -14,8 +14,11 @@ spring:
   #使用druid数据源
   type: com.alibaba.druid.pool.DruidDataSource
 
+
 #该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.iblogstreet.apigate.model
+  type-handlers-package:
+  config-location:
 

@@ -3,34 +3,14 @@ package com.iblogstreet.apigate.common;
 /**
  * Created by 13 on 17/6/26.
  */
-public class Result<T>  {
-    private static final long serialVersionUID = 1L;
-    private int resultCode;
-    private String message;
+public class Result<T> extends BaseResult {
     private T data;
 
     public Result() {
     }
 
     public Result(int resultCode, String message) {
-        this.resultCode = resultCode;
-        this.message = message;
-    }
-
-    public int getResultCode() {
-        return resultCode;
-    }
-
-    public void setResultCode(int resultCode) {
-        this.resultCode = resultCode;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+        super(resultCode, message);
     }
 
     public T getData() {
@@ -44,8 +24,8 @@ public class Result<T>  {
     @Override
     public String toString() {
         return "Result{" +
-                "resultCode=" + resultCode +
-                ", message='" + message + '\'' +
+                "resultCode=" + getResultCode() +
+                ", message='" + getMessage() + '\'' +
                 ", data={" + data.toString() + "}" +
                 '}';
     }

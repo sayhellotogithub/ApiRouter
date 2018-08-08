@@ -40,4 +40,6 @@ public class User {
     public void setRoleName(String roleName) {
         this.roleName = roleName == null ? null : roleName.trim();
     }
+
+
 }
