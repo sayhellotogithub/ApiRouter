@@ -36,10 +36,10 @@ mybatis:
     jdbc-type-for-null: null  #设置但JDBC类型为空时,某些驱动程序 要指定值,default:OTHER，插入空值时不需要指定类型
 
 #分页配置： https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md
-#pagehelper:
-#  helperDialect: mysql
-#  reasonable: true
-#  supportMethodsArguments: true
-#  params: count=countSql
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
 
